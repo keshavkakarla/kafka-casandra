@@ -1,0 +1,18 @@
+
+docker run -d \
+  --name cassandra \
+  -p 7199:7199 \
+  -p 9160:9160 \
+  -p 9042:9042 \
+  -p 61621:61621 \
+  -p 9260:9260 \
+  -p 50030:50030 \
+  -p 7080:7080 \
+  cassandra:3.10
+
+docker run -it --link cassandra:cassandra --rm cassandra cqlsh cassandra
+
+docker run -d \
+  --name kafka \
+  -p 9092:9092 \
+  wurstmeister/kafka:0.10.2.0-1
